@@ -109,6 +109,7 @@ export default {
                 }, 1000)
             }
             else{
+                this.isWaiting = false;
                 alert(data.message)
             }
         }

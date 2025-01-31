@@ -112,8 +112,11 @@ def setup_periodic_tasks(sender, **kwargs):
 @app.post('/products/download')
 def download_csv():
     seller_id = request.get_json().get("id")
+    products = Products.query.filter_by(seller_id=seller_id).all()
     t = generate_csv_task.apply_async((seller_id,))
     
+    if len(products) == 0:
+        return jsonify({"message": "No data found"}), 404
     if t is None:
         return jsonify({"message": "No data found"}), 404
 
