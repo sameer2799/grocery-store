@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        .greet{
+            margin: 50px;
+        }
+        .barchart {
+            width: 100%;
+            height: 100%;            
+        }
+        .piechart {
+            width: 100%;
+            height: 100%;
+        }
+        .polaroid {
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            margin: 8px;
+            display: inline-block;
+        }
+        .table{
+            font-family: arial, sans-serif;
+            text-align: middle;
+            border-collapse: collapse;
+            display: inline-block;
+            margin: 50px;
+            width: auto;
+        }
+        th{
+            border: 1px solid black;
+            background-color: #dddddd;
+            padding: 15px;
+            width: 50%;
+            
+        }
+        td {
+            border: 1px solid black;
+            padding: 15px;
+            width: 50%;
+            
+        }
+    </style>
+</head>
+<body>
+    <h3 class="greet">Hi! {{ user_info[1] }}, Have a look at your monthly report!</h3>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Number of Orders</th>
+                <th>Total Monthly Expenditure</th>
+            </tr>
+            <tr>
+                <td>{{ user_data.total_orders }}</td>
+                <td>{{ user_data.total_amount }}</td>
+            </tr>
+        </table>
+    </div>    
+    <div>
+        <div class="polaroid">
+            <caption> Product Count</caption>
+            <img src="./ReportData/barChart_for_{{ user_info[0] }}.png" alt="Chart wrt Products" class="barchart">
+        </div>
+        <div class="polaroid">
+            <caption> Category Share</caption>
+            <img src="./ReportData/pieChart_for_{{ user_info[0] }}.png" alt="Chart wrt Categories" class="piechart">
+        </div>
+    </div>    
+</body>
+</html>
